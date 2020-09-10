@@ -70,7 +70,7 @@ echo a.′/′.b;
 <details>
  <summary>heredoc</summary>
 
-Heredoc在正规的PHP文档中和技术书籍中一般没有详细讲述。他是一种Perl风格的字符串输出技术。使用heredoc技术可以实现界面与代码的准分离，比如phpwind模板。
+>Heredoc在正规的PHP文档中和技术书籍中一般没有详细讲述。他是一种Perl风格的字符串输出技术。使用heredoc技术可以实现界面与代码的准分离，比如phpwind模板。
 
 heredoc的语法是用”<<<”加上自己定义成对的标签，在标签范围內的文字视为一个字符串
 
@@ -114,6 +114,5 @@ EOT;
 
 <details>
  <summary>heredoc</summary>
-
+1
 </details>
- 
