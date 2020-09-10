@@ -449,6 +449,129 @@ array_count_values($arr); // 统计数组中所有值出现的次数
 
 
 <details>
+ <summary><b>约瑟夫环问题</b></summary>
+
+>一群猴子排成一圈，按1，2，…，n依次编号。然后从第1只开始数，数到第m只,把它踢出圈，从它后面再开始数，再数到第m只，在把它踢出去…，如此不停 的进行下去，直到最后只剩下一只猴子为止，那只猴子就叫做大王。要求编程模拟此过程，输入m、n, 输出最后那个大王的编号(约瑟夫环)。
+```
+function fuhuan($allnum, $ti){
+     $arr = array();
+     for($i = 0; $i < $allnum; $i++){
+         $arr[$i] = $i;
+     }
+ 
+     $nums = 1;
+     while(count($arr) > 1){
+          foreach ($arr as $key => $value) {
+              if($nums == $ti){
+                  unset($arr[$key]);
+                  $nums = 1;
+              }else{
+                  $nums++;
+              }
+         }
+     }
+     $new_arr = array_values($arr);
+     var_dump($new_arr[0] + 1);
+ }
+ fuhuan(10,10);
+```
+
+</details>
+
+
+
+<details>
+ <summary><b>isset() 、empty()与is_null的区别</b></summary>
+
+1. 当变量未定义时，is_null()和“参数本身”是不允许作为参数判断的，会报Notice警告错误；
+2. empty,isset首先都会检查变量是否存在，然后对变量值进行检测。而is_null 和 “参数本身”只是直接检查变量值，是否为null，因此如果变量未定义就会出现错误！
+3. isset()：仅当null和未定义，返回false；
+4. empty()：""、0、"0"、NULL、FALSE、array(),未定义，均返回false；
+5. is_null()：仅判断是否为null，未定义 报警告；
+6. 变量本身作为参数，与empty()一致，但接受未定义变量时，报警告；
+
+
+</details>
+
+
+
+<details>
+ <summary><b>MVC的不足之处</b></summary>
+
+1. 增加了系统结构和实现的复杂性。对于简单的界面，严格遵循MVC，使模型、视图与控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率。
+2. 视图与控制器间的过于紧密的连接。视图与控制器是相互分离，但确实联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用。
+3. 视图对模型数据的低效率访问。依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。
+4. 目前，一般高级的界面工具或构造器不支持MVC模式。改造这些工具以适应MVC需要和建立分离的部件的代价是很高的，从而造成使用MVC的困难。
+
+</details>
+
+
+
+<details>
+ <summary><b>session与cookie的联系和区别（运行机制），session共享问题解决方案</b></summary>
+
+##### 区别与联系：
+>使用session_start()调用session，服务器端在生成session文件的同时生成session ID哈希值和默认值为PHPSESSID的session name，并向客户端发送变量为PHPSESSID(session name)(默认)值为一个128位的哈希值。服务器端将通过该cookie与客户端进行交互，session变量的值经php内部系列化后保存在服务器 机器上的文本文件中，和客户端的变量名默认情况下为PHPSESSID的coolie进行对应交互，即服务器自动发送了http 头:header(‘Set-Cookie: session_name()=session_id(); path=/’);即setcookie(session_name(),session_id());当从该页跳转到的新页面并调用 session_start()后,PHP将检查与给定ID相关联的服务器端存贮的session数据，如果没找到则新建一个数据集。
+
+#### 共享方案：
+1. 使用数据库保存session， 使用数据库来保存session，就算服务器宕机了也没事，session照样在。
+问题：程序需要定制；每次请求都进行数据库读写开销不小，另外数据库是一个单点，可以做数据库的hash来解 决这个问题。
+2. 使用 memcached来保存session， 这种方式跟数据库类似，内存存取性能比数据库好很多。
+问题：程序需要定制，增加 了工作量；存入memcached中的数据都需要序列化，效率较低，断电或者重启电脑容易丢失数据；
+3. 通过加密的cookie，在A服务器上登录，在用户的浏览器上添加加密的cookie，当用户访问B服务器时，检查有无Session，如果没有，就检验 Cookie是否有效，Cookie有效的话就在B服务器上重建session。简单，高效， 服务器的压力减小了，因为session数据不存在服务器磁盘上。根本就不会出现session读取不到的问题。
+>问题：网络请求占用很多。每次请求时，客户端都要通过cookie发送session数据给服务器，session中数据不能太多，浏览器对cookie的大小存在限制。不适合高访问量的情况，因为高访问量的情况下。
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数得到header头信息</b></summary>
+
+```
+function getHeader()
+{
+    $headers = [];
+    if (function_exists('getallheaders')) {
+        $headers = getallheaders();
+    } elseif (function_exists('http_get_request_headers')) {
+        $headers = http_get_request_headers();
+    } else {
+        foreach ($_SERVER as $key => $value) {
+            if(strstr($key, 'HTTP_')) {
+                $newk = ucwords(strtolower(str_replace('_', '-', substr($key, 5))));
+                $headers[$newk] = $value;
+            }
+        }
+    }
+
+    var_dump($headers);
+}
+```
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
  <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
 
  
