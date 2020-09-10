@@ -236,4 +236,23 @@ __wakeup当使用unserialize时被调用，可用于做些对象的初始化操�
 当调用var_export()导出类时，此静态方法被调用。用__set_state的返回值做为var_export的返回值。
 10. __debuginfo
 当调用var_dump()打印对象时被调用（当你不想打印所有属性）适用于PHP5.6版本
+
+```
+  class Animal{
+  }
+  $m = new Animal(); //__construct()被调用
+  $m->not_exist_property = test; //__set()被调用
+  echo $m->not_exist_property;//__get()被调用
+  $m->abc(1,2,3); //__call()被调用
+  echo isset($m->not_exist_property); //__isset()被调用，返回bool值
+  unset($m->not_exist_property); //__unset()被调用
+  echo $tmp = serialize($m); //__sleep()被调用
+  unserialize($tmp); //__wakeup()被调用
+  $m1 = clone $m; //__clone()被调用，对象默认是引用传递，使用clone关键词则可实现对象复制
+  $m(); //__invoke() 已函数调用类
+  eval( '$m2 = ' . var_export ( $m , true ) . ';' );
+  var_dump($m2);
+  var_dump($m);
+  //最后__destruct()被调用
+```
 </details>
