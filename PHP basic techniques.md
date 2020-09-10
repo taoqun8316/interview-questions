@@ -306,6 +306,17 @@ ob_clearn()--清空“输出缓冲区”;
 
 4. 查询缓存：根据查询来进行缓存。将查询得到的数据缓存在一个文件中，下次遇到相同的查询时，就直接先从这个文件里面调数据，不再去查数据库；但此处的缓存文件名可能就需要以查询语句为基点来建立唯一标示.
 
+>注意：以上几种缓存方式都需要对缓存的文件设置一个有效时间，在这个时间内，相同的访问会先取缓存文件的内容，超过有效时间后就重新从数据库中获取数据，并生成新的缓存文件。
+
+5. 内存式缓存：使用redis,memcached等nosql数据库设置PHP缓存，通过缓存查询结果，来减少数据库的访问次数，从而提高网站的响应速度。
+
+6. pache缓存模块：apache安装完以后，是不允许被cache的。如果外接了cache或squid服务器要求进行web加速的话，就需要在htttpd.conf里进行设置，当然前提是在安装apache的时候要激活mod_cache的模块。
+安装apache时：./configure –enable-cache –enable-disk-cache –enable-mem-cache
+
+7. PHP APC缓存扩展：使用PHP中的APC扩展来进行缓存
+
+8. Opcode：首先php代码被解析为Tokens，然后再编译为Opcode码，最后执行Opcode码，返回结果；所以，对于相同的php文件，第一次运行时 可以缓存其Opcode码，下次再执行这个页面时，直接会去找到缓存下的opcode码，直接执行最后一步，而不再需要中间的步骤了。比较知名的是XCache、Turck MM Cache、PHP Accelerator等。关于PHP Opcode，鸟哥的博客中有一篇详解：http://www.laruence.com/2008/06/18/221.html
+
 </details>
 
 
