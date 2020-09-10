@@ -1,6 +1,6 @@
 
 <details>
- <summary>PHP中几个输出函数echo，print()，print_r()，sprintf()，var_dump()的区别</summary>
+ <summary><b>PHP中几个输出函数echo，print()，print_r()，sprintf()，var_dump()的区别</b></summary>
 
 
 1：echo：是语句不是函数，没有返回值，可输出多个变量值，不需要圆括号。不能输出数组和对象，只能打印简单类型(如int,string)。
@@ -16,7 +16,7 @@
 
 
 <details>
- <summary>不用新变量直接交换现有两个变量的值</summary>
+ <summary><b>不用新变量直接交换现有两个变量的值</b></summary>
 
 1.用list()
 ```
@@ -71,7 +71,6 @@ echo a.′/′.b;
  <summary><b>heredoc</b></summary>
 
 >Heredoc在正规的PHP文档中和技术书籍中一般没有详细讲述。他是一种Perl风格的字符串输出技术。使用heredoc技术可以实现界面与代码的准分离，比如phpwind模板。
-
 heredoc的语法是用”<<<”加上自己定义成对的标签，在标签范围內的文字视为一个字符串
 
 规则如下：
@@ -114,5 +113,5 @@ EOT;
 
 <details>
  <summary>heredoc</summary>
-1
+
 </details>
