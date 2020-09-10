@@ -15,6 +15,9 @@ timeout：过期时间5秒（对应httpd.conf里的参数是：KeepAliveTimeout�
 max：最多100次请求，强制断掉连接。就是在timeout时间内又有新的连接过来，同时max会自动减1，直到为0，强制断掉。
 ```
 
+*** 
+### PHP
+
 ##### PHP中几个输出函数echo，print()，print_r()，sprintf()，var_dump()的区别
 ```
 1：echo：是语句不是函数，没有返回值，可输出多个变量值，不需要圆括号。不能输出数组和对象，只能打印简单类型(如int,string)。
