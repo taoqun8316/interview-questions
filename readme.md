@@ -28,7 +28,9 @@ max：最多100次请求，强制断掉连接。就是在timeout时间内又有�
 6：var_dump()：函数，输出变量的内容、类型或字符串的内容、类型、长度。常用来调试。
 ```
 
-##### 不用新变量直接交换现有两个变量的值
+<details>
+<summary>不用新变量直接交换现有两个变量的值</summary>
+
 ```
 1.用list()
 
@@ -74,10 +76,4 @@ echo a.′/′.b;
 
     a=a^b;echo a."-".$b;
 ```
-
-
-<details>
-<summary>Title</summary>
-
-content!!!
 </details>
