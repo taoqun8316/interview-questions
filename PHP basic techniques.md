@@ -181,7 +181,6 @@ if ($fp = fopen($fileName, 'a+')) {
   session_start();
   if(isset($_SESSION[’user’]) && $_SESSION[’user’]="laogong" {
   echo "已登录!";
-}
 ```
 
 >Session过期时间设定:
@@ -192,3 +191,49 @@ ini_get('session.gc_maxlifetime');//得到ini中设定值
 
 </details>
 
+
+
+<details>
+ <summary><b>PHP魔术方法和魔术常量</b></summary>
+
+##### 魔术常量
+
+1. __LINE__
+返回文件中的当前行号。
+2. __FILE__
+　　返回文件的完整路径和文件名。如果用在包含文件中，则返回包含文件名。自PHP4.0.2 起，__FILE__总是包含一个绝对路径，而在此之前的版本有时会包含一个相对路径。
+3. __FUNCTION__
+　　返回函数名称(PHP4.3.0 新加)。自PHP5 起本常量返回该函数被定义时的名字(区分大小写)。在PHP4 中该值总是小写字母的。
+4. __CLASS__
+　　返回类的名称(PHP4.3.0 新加)。自PHP5 起本常量返回该类被定义时的名字(区分大小写)。在PHP4 中该值总是小写字母的。
+5. __METHOD__
+　　返回类的方法名(PHP5.0.0 新加)。返回该方法被定义时的名字(区分大小写)。
+
+##### Class魔术方法
+>魔术方法是PHP面向对象中很有用特性。它们在特定的情况下被触发，都是以双下划线开头，可以理解为钩子函数，利用模式方法可以轻松实现PHP面向对象中重载（Overloading即动态创建类属性和方法）。魔术方法很多还是成对出现的，以下列出目前PHP中所有的模式方法。
+1. __construct，__destruct
+__constuct构建对象的时被调用；
+__destruct明确销毁对象或脚本结束时被调用；
+2. __get，__set
+__set当给不可访问或不存在属性赋值时被调用
+__get读取不可访问或不存在属性时被调用
+3. __isset，__unset
+__isset对不可访问或不存在的属性调用isset()或empty()时被调用
+__unset对不可访问或不存在的属性进行unset时被调用
+4. __call，__callStatic
+__call调用不可访问或不存在的方法时被调用
+__callStatic调用不可访问或不存在的静态方法时被调用
+5. __sleep，__wakeup
+__sleep当使用serialize时被调用，当你不需要保存大对象的所有数据时很有用
+__wakeup当使用unserialize时被调用，可用于做些对象的初始化操作
+6. __clone
+进行对象clone时被调用，用来调整对象的克隆行为
+7. __toString
+当一个类被转换成字符串时被调用
+8. __invoke
+当以函数方式调用对象时被调用
+9. __set_state
+当调用var_export()导出类时，此静态方法被调用。用__set_state的返回值做为var_export的返回值。
+10. __debuginfo
+当调用var_dump()打印对象时被调用（当你不想打印所有属性）适用于PHP5.6版本
+</details>
