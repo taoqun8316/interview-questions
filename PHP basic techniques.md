@@ -255,4 +255,124 @@ __wakeup当使用unserialize时被调用，可用于做些对象的初始化操�
   var_dump($m);
   //最后__destruct()被调用
 ```
+
+</details>
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+```
+function my_scandir($dir)
+{
+     $files = array();
+     if ( $handle = opendir($dir) ) {
+        //opendir() 函数打开一个目录句柄，可由 closedir()，readdir() 和 rewinddir() 使用。
+         while ( ($file = readdir($handle)) !== false ) {
+            //readdir() 函数返回由 opendir() 打开的目录句柄中的条目。
+             if ( $file != ".." && $file != "." ) {
+                 if ( is_dir($dir . "/" . $file) ) {  //测试文件是否为目录
+                     $files[$file] = my_scandir($dir . "/" . $file);
+                     //scandir() 函数返回一个数组，其中包含指定路径中的文件和目录。
+                 }else {
+                     $files[] = $file;
+                 }
+             }
+         }
+         closedir($handle);
+         return $files;
+     }
+}
+var_dump(my_scandir('php/ajax'));
+```
+
+</details>
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
+</details>
+
+
+
+<details>
+ <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+
+ 
+
 </details>
