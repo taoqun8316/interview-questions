@@ -336,9 +336,31 @@ PHP内置的字符串长度函数strlen无法正确处理中文字符串，它�
 
 
 <details>
- <summary><b>写一个函数，可以遍历文件夹下的所有文件和文件夹</b></summary>
+ <summary><b>写一个函数，尽可能高效的从一个标准url中取出扩展名</b></summary>
 
- 
+```
+function getExt($url)
+{
+  $arr=parse_url($url);
+    //方法一、
+    $name=basename($arr['path']);
+    $extArr=explode('.',$name);
+    return $extArr[1];
+
+    //方法二、
+    $path=$arr['path'];
+    $str=strrchr($path,'.');
+    return $str;
+
+    //方法三、
+    $pathArr=pathinfo($url);
+    //show_dump($pathArr);
+    $str = $pathArr['extension'];
+    list($type, $vars) = explode('?',$str);
+
+    return $type;
+ }
+```
 
 </details>
 
