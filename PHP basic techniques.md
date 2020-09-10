@@ -14,7 +14,6 @@
 
 
 
-
 <details>
  <summary><b>不用新变量直接交换现有两个变量的值</b></summary>
 
@@ -22,35 +21,27 @@
 ```
    a=10;b = 25;
    list(a,b)=array(b,a);
-
    echo a.′/′.b;//25/10
 ```
 方法二：用传值方式加&符
 ```
-  function swap(&a,&b){
-
+  function swap(&a,&b)
+  {
       $c = '';
-
       c=a;
-
       a=b;
-
       b=c;
+  }
 
-}
-
-      a=25;b = 35;
-      swap(a,b);
-
-echo a.′/′.b;
+  a=25;b = 35;
+  swap(a,b);
+  echo a.′/′.b;
 ```
 
 方法三：使用数组分割
 ```
     a="123";b = "456";
-
     b=a."#".b;
-
     b = explode("#",b);a = b[1];b = b[0];echoa."-".$b;
 ```
  
@@ -58,9 +49,7 @@ echo a.′/′.b;
 方法四：使用异或运算
 ```
     a="fsdfds";b = "xiaorui";
-
     a=a^b;b = b^a;
-
     a=a^b;echo a."-".$b;
 ```
 </details>
@@ -157,6 +146,20 @@ if ($fp = fopen($fileName, 'a+')) {
 
 1. 设置php.ini的session.use_trans_sid = 1或者打开enable-trans-sid选项，让PHP自动跨页传递session id。
 2. 手动通过URL传值, 隐藏表单传递session id。
+
+```
+session_start();
+$_SESSION[’var1’]="源码爱好者";
+$sn = session_id();
+$url="<a href=".""s2.php?s=".$sn."">下一页</a>";
+echo $url;
+```
+```
+session_id($_GET[’s’]);
+session_start();
+echo "传递的session变量var1的值为：".$_SESSION[’var1’];
+```
+
 3. 用文件、数据库等形式保存session_id,在跨页过程中手动调用。
 
 >Session过期时间设定:
@@ -164,5 +167,6 @@ if ($fp = fopen($fileName, 'a+')) {
 ini_set('session.gc_maxlifetime', 3600); //设置时间 
 ini_get('session.gc_maxlifetime');//得到ini中设定值 
 ```
+
 </details>
 
