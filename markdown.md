@@ -90,6 +90,7 @@ Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯
 ### 插入图片
  印象笔记支持嵌入网络图片或者直接拖入本地图片，其中本地图片格式支持 jpg、png 和 gif。语法示例：
 ![image](https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png)
+![avatar](./images/timg.jpg)
 
 另外，针对插入的本地图片可以控制图片大小，在拖拽、拷贝或者点击插入本地图片之后，直接在图片名称后面（无需空格）添加以下语法均可以按照以下要求控制图片大小：
 ```
