@@ -369,60 +369,46 @@ function getExt($url)
  <summary><b>php数组函数常见的那些</b></summary>
 
  1. 数组操作的基本函数
-
+```
 array_values($arr); //获得数组的值
-
 array_keys($arr); //获得数组的键名
-
 array_flip($arr); //数组中的值与键名互换（如果有重复前面的会被后面的覆盖）
-
 array_search('PHP',$arr); //检索给定的值，加true则是严格类型检查
-
 array_reverse($arr); //将数组中的元素翻转
-
 in_array("apple", $arr); //在数组中检索apple
-
 array_key_exists("apple", $arr); // 检索给定的键名是否存在数组中
-
 array_count_values($arr); // 统计数组中所有值出现的次数
-
+```
 
 2. 数组的分段和填充
+```
 array_slice($arr, 0, 3); //可以将数组中的一段取出，此函数忽略键名（数组的分段）
-
 array_splice($arr, 0, 3，array("black","maroon")); //可以将数组中的一段取出，与上个函数不同在于返回的序列从原数组中删除
-
 array_chunk($arr, 3, TRUE); //可以将一个数组分割成多个，TRUE为保留原数组的键名（分割多个数组）
-
+```
 
 3. 数组与栈，列队
+```
 array_push($arr, "apple", "pear"); //将一个或多个元素压入数组栈的末尾（入栈），返回入栈元素的个数
-
 array_pop($arr); // 将数组栈的最后一个元素弹出（出栈）
-
 array_shift($arr); //数组中第一个元素移出并返回（数组长度减1，其他元素向前移动一位，数字键名改为从零计数，文字键名不变）
-
 array_unshift($arr,"a",array(1,2)); //在数组的开头插入一个或多个元素
-
+```
 
 4. 数组的排序
+```
 sort($arr); //由小到大，忽略键名 rsort($arr); //由大到小，忽略键名
-
 asort($arr); //由小到大，保留键名 arsort($arr); // 由大到小，保留键名
-
 ksort($arr); //按照键名正序排序 krsort($arr); // 按照键名逆序排序
-
+```
 
 5. 数组的计算
+```
 array_sum($arr); //对数组内部的所有元素做求和运算（数组元素的求和）
-
 array_merge($arr1, $arr2); //合并两个或多个（相同字符串键名，后面覆盖前面，相同的数字键名，后面的附加到后面）
-
-
 array_diff($arr1, $arr2); //返回差集结果数组 array_diff_assoc($arr1, $arr2, $arr3); //返回差集结果数组，键名也做比较
-
 array_intersect($arr1, $arr2); //返回交集结果数组 array_intersect_assoc($arr1, $arr2); //返回交集结果数组，键名也做比较
-
+```
 
 6. 其他的数组函数
 array_unique($arr); //移除数组中重复的值，新的数组中会保留原始的键名
@@ -436,9 +422,8 @@ shuffle($arr); // 将数组的顺序打亂
 <details>
  <summary><b>有mail.log的一个文档，内容为若干邮件地址，用’\n’分隔换行。挑选sina.com的地址（包括从文件读取、过滤到列印出来</b></summary>
 
- 思路1：用正则表达式（比较慢，效率地，不推荐用）
-
- 思路2：cat mail.log | grep sina.com
+ 1. 用正则表达式（比较慢，效率地，不推荐用）
+ 2. cat mail.log | grep sina.com
 
 </details>
 
