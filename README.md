@@ -1,2 +1,1 @@
-# PHP-interview-questions
-
+FUCK INTERVIEWER!!!
