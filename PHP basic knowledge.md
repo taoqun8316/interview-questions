@@ -149,3 +149,15 @@ if ($fp = fopen($fileName, 'a+')) {
 > 超时设置为1ms，如果这里时间内没有获得锁，就反复获得，直接获得到对文件操作权为止，当然。如果超时限制已到，就必需马上退出，让出锁让其它进程来进行操作。
 
 </details>
+
+
+
+<details>
+ <summary><b>写个函数来解决多线程同时读写一个文件的问题</b></summary>
+
+1. 设置php.ini的session.use_trans_sid = 1或者打开enable-trans-sid选项，让PHP自动跨页传递session id。
+2. 手动通过URL传值, 隐藏表单传递session id。
+3. 用文件、数据库等形式保存session_id,在跨页过程中手动调用。
+
+</details>
+
