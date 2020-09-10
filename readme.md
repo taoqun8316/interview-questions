@@ -74,3 +74,10 @@ echo a.′/′.b;
 
     a=a^b;echo a."-".$b;
 ```
+
+
+<details>
+<summary>Title</summary>
+
+content!!!
+</details>
