@@ -112,6 +112,40 @@ EOT;
 
 
 <details>
- <summary><b>heredoc</b></summary>
+ <summary><b>写个函数来解决多线程同时读写一个文件的问题</b></summary>
+
+一般的方案：
+
+```
+//fopen():打开文件或者 URL，返回resource类型数据 。
+$fp = fopen('./tmp/lock.txt', 'a+');
+if (flock($fp, LOCK_EX)) {//取得独占锁定
+    fwrite($fp, "Write something here\n");
+    flock($fp, LOCK_UN);// 释放锁定
+} else {
+    echo "Couldn't lock the file !";
+}
+fclose($fp);
+```
+>但在PHP中，flock似乎工作的不是那么好！在多并发情况下，似乎是经常独占资源，不即时释放，或者是根本不释放，造成死锁，从而使服务器的cpu占用很高，甚至有时候会让服务器彻底死掉。
+
+方案二：对文件进行加锁时，设置一个超时时间.
+```
+$fileName = './tmp/lock.txt';
+if ($fp = fopen($fileName, 'a+')) {
+    $startTime = microtime();
+    while ((microtime() - $startTime) < 1000) {
+        $canWrite = flock($fp, LOCK_EX);
+        if (!$canWrite) {
+            usleep(round(rand(0, 100) * 1000));
+        } else {
+            fwrite($fp, "Write something here\n");
+            break;
+        }
+    }
+    fclose($fp);
+}
+```
+> 超时设置为1ms，如果这里时间内没有获得锁，就反复获得，直接获得到对文件操作权为止，当然。如果超时限制已到，就必需马上退出，让出锁让其它进程来进行操作。
 
 </details>
