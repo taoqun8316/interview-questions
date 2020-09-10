@@ -148,19 +148,41 @@ if ($fp = fopen($fileName, 'a+')) {
 2. 手动通过URL传值, 隐藏表单传递session id。
 
 ```
-session_start();
-$_SESSION[’var1’]="源码爱好者";
-$sn = session_id();
-$url="<a href=".""s2.php?s=".$sn."">下一页</a>";
-echo $url;
-```
-```
-session_id($_GET[’s’]);
-session_start();
-echo "传递的session变量var1的值为：".$_SESSION[’var1’];
+  session_start();
+  $_SESSION[’var1’]="源码爱好者";
+  $sn = session_id();
+  $url="<a href=".""s2.php?s=".$sn."">下一页</a>";
+  echo $url;
+  ```
+  ```
+  session_id($_GET[’s’]);
+  session_start();
+  echo "传递的session变量var1的值为：".$_SESSION[’var1’];
 ```
 
 3. 用文件、数据库等形式保存session_id,在跨页过程中手动调用。
+```
+  $name=$_POST[’name’];
+  $pass=$_POST[’pass’];
+
+  session_start();
+  $_SESSION[’user’]= $name;
+  $psid=session_id();
+  $fp=fopen("e:\tmp\phpsid.txt","w+";
+  fwrite($fp,$psid);
+  fclose($fp);
+  echo "已登录<br>";
+```
+```
+  $fp=fopen("e:\tmp\phpsid.txt","r";
+  $sid=fread($fp,1024);
+  fclose($fp);
+  session_id($sid);
+  session_start();
+  if(isset($_SESSION[’user’]) && $_SESSION[’user’]="laogong" {
+  echo "已登录!";
+}
+```
 
 >Session过期时间设定:
 ```
