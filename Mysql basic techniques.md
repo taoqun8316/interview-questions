@@ -65,7 +65,7 @@ order BY FIND_IN_SET(ID, '10, 32, 22')
 4. Serializable: 事务只能一个接着一个地执行，但不能并发执行。事务隔离级别最高。
 >不同的隔离级别有不同的现象，并有不同的锁定/并发机制，隔离级别越高，数据库的并发性就越差。
 
-![avatar](./images/386.png)
+![avatar](./images/386.png) 
 
 </details>
 
