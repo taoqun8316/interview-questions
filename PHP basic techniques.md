@@ -589,6 +589,9 @@ function getHeader()
       
       }
     ```
+2. 十道海量数据处理面试题与十个方法大总结
+>https://blog.csdn.net/v_JULY_v/article/details/6279498
+
 
 </details>
 
@@ -658,3 +661,124 @@ function readDirQueue($dir)
   顺便问一下: fast cgi是什么? php和php-fpm是啥关系?
 
  </details>
+
+
+
+
+<details>
+ <summary><b>10g文件，用php查看它的行数</b></summary>
+
+  >它的方式是一次读取一部分数据,计算这部分数据中有多少个换行符,不断循环,效率会比顺序读取内容高
+
+```
+/*
+ * 高效率计算文件行数
+ * @author axiang
+*/
+function count_line($file)
+{
+    $fp = fopen($file, "r");
+    $i  = 0;
+    while (!feof($fp)) {
+        //每次读取2M
+        if ($data = fread($fp, 1024 * 1024 * 2)) {
+            //计算读取到的行数
+            $num = substr_count($data, "\n");
+            $i += $num;
+        }
+    }
+    fclose($fp);
+    return $i;
+}
+```
+
+</details>
+
+
+
+<details>
+ <summary><b>php进程模型，php是怎么支持多个并发的 (未解决)</b></summary>
+
+ 
+
+</details>
+
+
+<details>
+ <summary><b></b></summary>
+
+ 
+
+</details>
+
+ 
+
+</details>
+
+
+<details>
+ <summary><b></b></summary>
+
+ 
+
+</details>
+
+ 
+
+</details>
+
+
+<details>
+ <summary><b></b></summary>
+
+ 
+
+</details>
+
+ 
+
+</details>
+
+
+<details>
+ <summary><b></b></summary>
+
+ 
+
+</details>
+
+ 
+
+</details>
+
+
+<details>
+ <summary><b></b></summary>
+
+ 
+
+</details>
+
+ 
+
+</details>
+
+
+<details>
+ <summary><b></b></summary>
+
+ 
+
+</details>
+
+ 
+
+</details>
+
+
+<details>
+ <summary><b></b></summary>
+
+ 
+
+</details>
