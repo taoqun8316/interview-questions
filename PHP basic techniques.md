@@ -591,3 +591,55 @@ function getHeader()
     ```
 
 </details>
+
+
+
+<details>
+ <summary><b>请写出自少两个获取指定文件夹下所有文件的方法（代码或思路）</b></summary>
+
+```
+//递归
+function readDirDeep($path,$deep = 0)
+{
+    $handle = opendir($path);
+    while(false !== ($filename = readdir($handle))){
+        if($filename == '.' || $filename == '..') continue;
+        echo str_repeat('&nbsp;',$deep*5) . $filename.'<br>';
+            //str_repeat(str,n) 重复一个str字符串n次
+        if(is_dir($path.'/'.$filename)){
+            readDirDeep($path.'/'.$filename,$deep+1);
+            }
+        }
+        //闭关
+        closedir($handle);
+}
+```
+
+```
+//队列
+队列的方式就是遇到目录就放入队列,非目录打印就好
+function readDirQueue($dir)
+{
+    $dirs = [$dir];
+
+    while ($path = array_shift($dirs)) {
+        if (is_dir($path) && $handle = opendir($path)) {
+            while (false !== ($filename = readdir($handle))) {
+                if ($filename == '.' || $filename == '..') continue;
+                $real_path = $path . DIRECTORY_SEPARATOR . $filename;
+
+                if(is_dir($real_path)) {
+                    $dirs[] = $real_path;
+                }else {
+                    echo $real_path . '<br/>';
+                }
+            }
+            //闭关
+            closedir($handle);
+        }
+    }
+
+}
+```
+
+ </details>
