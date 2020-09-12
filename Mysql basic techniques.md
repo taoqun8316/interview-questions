@@ -194,12 +194,26 @@ order BY FIND_IN_SET(ID, '10, 32, 22')
 
 
 <details>
- <summary><b>字段为什么要求定义为not null?</b></summary>
+ <summary><b>表结构设计</b></summary>
 
-MySQL官网这样介绍:
->NULL columns require additional space in the rowto record whether their values are NULL. For MyISAM tables, each NULL columntakes one bit extra, rounded up to the nearest byte.
-null值会占用更多的字节,且会在程序中造成很多与预期不符的情况.
+1. 为什么要尽量设定一个主键?
 
+	主键是数据库确保数据行在整张表唯一性的保障,即使业务上本张表没有主键,也建议添加一个自增长的ID列作为主键.设定了主键之后,在后续的删改查的时候可能更加快速以及确保操作数据范围安全.
+
+2. 主键使用自增ID还是UUID?
+
+	推荐使用自增ID,不要使用UUID.
+	>因为在InnoDB存储引擎中,主键索引是作为聚簇索引存在的,也就是说,主键索引的B+树叶子节点上存储了主键索引以及全部的数据(按照顺序),如果主键索引是自增ID,那么只需要不断向后排列即可,如果是UUID,由于到来的ID与原来的大小不确定,会造成非常多的数据插入,数据移动,然后导致产生很多的内存碎片,进而造成插入性能的下降.
+
+3. 字段为什么要求定义为not null?
+
+	MySQL官网这样介绍:
+	>NULL columns require additional space in the rowto record whether their values are NULL. For MyISAM tables, each NULL columntakes one bit extra, rounded up to the nearest byte.
+	null值会占用更多的字节,且会在程序中造成很多与预期不符的情况.
+
+4. 如果要存储用户的密码散列,应该使用什么字段进行存储?
+
+	密码散列,盐,用户身份证号等固定长度的字符串应该使用char而不是varchar来存储,这样可以节省空间且提高检索效率.
 
 </details>
 
