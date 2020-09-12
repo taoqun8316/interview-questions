@@ -670,6 +670,7 @@ function count_line($file)
  <summary><b>php进程模型，php是怎么支持多个并发的 (未解决)</b></summary>
 
 1. PHP-FPM 启动进程的方式主要有哪几种，区别是什么？
+
   ①：静态（Static）
   直接开启指定数量的 PHP-FPM 进程，不再增加或者减少；启动固定数量的进程，占用内存高。但在用户请求波动大的时候，对 Linux 操作系统进程的处理上耗费的系统资源低。
 
