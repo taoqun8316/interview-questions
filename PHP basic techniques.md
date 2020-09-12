@@ -648,13 +648,13 @@ function readDirQueue($dir)
 
 
 <details>
- <summary><b>请写出自少两个获取指定文件夹下所有文件的方法（代码或思路）</b></summary>
+ <summary><b>从用户在浏览器中输入网址并回车，到看到完整的页面，中间都经历了哪些过程</b></summary>
 
-   浏览器->url->dns->ip->port->tcp->nginx->server name->php-fpm/fast cgi->php
-     ^  <-  client ip:port  <- ^ <-  ^                                 <-
-     
-   整个过程大概会涉及这些,里面的细节可以去了解一下
-     
-   顺便问一下: fast cgi是什么? php和php-fpm是啥关系?
+  浏览器->url->dns->ip->port->tcp->nginx->server name->php-fpm/fast cgi->php
+   ^  <-  client ip:port  <- ^ <-  ^                                 <-
+   
+  整个过程大概会涉及这些,里面的细节可以去了解一下
+   
+  顺便问一下: fast cgi是什么? php和php-fpm是啥关系?
 
  </details>
