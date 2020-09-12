@@ -290,3 +290,13 @@ varchar的10代表了申请的空间长度,也是可以存储的数据的最大�
 
 </details>
 
+
+
+<details>
+ <summary><b>QL注入的原理是什么？如何防止SQL注入</b></summary>
+
+	通常都是初级程序员写的初级代码,未过滤用户输入导致的,现代框架的ORM一般都做过相应处理,如果需要自己处理,有两种解决方式:
+	1. 转义用户输入(htmlentities/htmlspecialchars),用mysql_real_escape_string方法过滤SQL语句的参数
+	2. 预编译sql    (最佳方式)
+
+</details>
