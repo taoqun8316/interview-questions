@@ -550,3 +550,44 @@ function getHeader()
 ```
 
 </details>
+
+<details>
+ <summary><b>写一个函数得到header头信息</b></summary>
+
+1. 有两个文件文件，大小都超过了1G，一行一条数据，每行数据不超过500字节，两文件中有一部分内容是完全相同的，请写代码找到相同的行，并写到新文件中。PHP最大允许内内为255M。
+  顺序读取两个文件的的全部记录,将每条记录经过hash->转换为10进制->%n后存到10个文件中,这样一共2G的数据分成10份,每份就是204.8M,低于内存限制,
+  我可以一次读取一个文件,并用hash桶的方式得到单个文件中的内容是否有重复,因为每条记录都经过hash处理的,所以相同的记录肯定会在同一个文件中。
+
+  下面是伪代码:
+  ```
+    /**
+     * 将两个文件中的每条记录通过hash求余后分别存入10个文件中
+     * 如果某个文件太大,超过限制内存大小,则可以对其再次hash求余
+     */
+    $handler = fopen('file_a_AND_file_b', 'r');
+    
+    while ($line = fgetc($handler)) {
+        $save_to_file_name = crc32(hash('md5', $line)) % 10;
+        file_put_contents($save_to_file_name, $line);     
+    }
+    
+    /**
+     *
+     */
+    $files = [ '10个文件的路径' ];
+    foreach ($files as $file) {
+    
+        $handler = fopen($file, 'r');
+        $tmp_arr = [];
+        while($line = fgetc($handler)) {
+            if(isset($tmp_arr[$line])) {
+                file_put_contents('common_content.txt', $line);
+            } else {
+                $tmp_arr[$line] = true;
+            }
+        }
+    
+    }
+  ```
+
+</details>
