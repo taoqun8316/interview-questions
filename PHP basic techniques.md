@@ -859,9 +859,13 @@ function count_line($file)
 
 
 <details>
- <summary><b></b></summary>
+ <summary><b>restful 设计 (未解决)</b></summary>
 
- 
+  get是从服务器取资源
+  post是新建资源
+  put是更新完整资源
+  patch更新部分资源
+  delete是删除资源
 
 </details>
 
@@ -871,8 +875,20 @@ function count_line($file)
 
 
 <details>
- <summary><b></b></summary>
+ <summary><b>设计模式 (未解决)</b></summary>
 
- 
+  工厂模式：定义一个标准，用到的类可以按这个标准实现相应功能
+  单例模式：防止重复实例化，减少资源调用
+  数据映射：数据库ORM应用
+  适配器模式：兼容老数据，多态的应用
+
+</details>
+
+
+
+<details>
+ <summary><b>Ajax 跨域请求时，会出现什么问题？如何解决</b></summary>
+
+  >https://dailc.github.io/2017/03/22/ajaxCrossDomainSolution.html
 
 </details>
