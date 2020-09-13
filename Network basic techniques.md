@@ -1,5 +1,5 @@
 <details>
- <summary><b>HTTP中GET与POST的区别，注意最后一条</b></summary>
+ <summary><b>HTTP中GET与POST的区别</b></summary>
 
 	1. GET在浏览器回退时是无害的，而POST会再次提交请求。
 	2. GET产生的URL地址可以被Bookmark，而POST不可以。
@@ -12,6 +12,9 @@
 	9. GET参数通过URL传递，POST放在Request body中。
 	10. GET产生一个TCP数据包，POST产生两个TCP数据包。
 
+	第10点的解释：
+		对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；
+	    而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。
 </details>
 
 
