@@ -745,9 +745,45 @@ function count_line($file)
 
 
 <details>
- <summary><b></b></summary>
+ <summary><b>Trait 方法冲突时，调用优先级问题</b></summary>
 
- 
+  ```
+  trait MyTrait
+  {
+      public function getInfo()
+      {
+          echo '我是 Trait 中的方法';
+          echo '<hr>';
+      }
+  }
+  class Father
+  {
+      use MyTrait;
+      public function getInfo()
+      {
+          echo '我是 Father 中的 getInfo 方法';
+          echo '<hr>';
+      }
+  }
+  class Child extends Father
+  {
+      use MyTrait;
+      public function getInfo()
+      {
+          echo '我是 Child 中的 getInfo 方法';
+          echo '<hr>';
+      }
+  }
+
+  $obj = new Child;
+  $obj->getInfo();
+   ```
+  如果 父类 子类 和 trait 定义了相同的方法，那么调用的优先级为：
+  子类 > trait > 父类
+  为什么呢？
+  1. 子类 extends 父类时，继承了 getInfo() 方法；
+  2. 子类 use MyTrait 时，继承了 MyTrait 中的 getInfo() 方法，从而覆盖了父类的 getInfo() 方法；
+  3. 子类自定义了 getInfo() ，从而覆盖了 MyTrait 中的 getInfo() 方法
 
 </details>
 
