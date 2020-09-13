@@ -667,7 +667,7 @@ function count_line($file)
 
 
 <details>
- <summary><b>php进程模型，php是怎么支持多个并发的 (未解决)</b></summary>
+ <summary><b>php进程模型，php是怎么支持多个并发的</b></summary>
 
 1. PHP-FPM 启动进程的方式主要有哪几种，区别是什么？
 
@@ -733,6 +733,7 @@ function count_line($file)
 </details>
 
 
+
 <details>
  <summary><b>nginx的进程模型，怎么支持多个并发 (未解决)</b></summary> 
 
@@ -740,7 +741,7 @@ function count_line($file)
 
 </details>
 
- 
+
 
 </details>
 
