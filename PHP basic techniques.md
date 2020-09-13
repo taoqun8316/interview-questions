@@ -915,3 +915,15 @@ function count_line($file)
 
 
 
+<details>
+ <summary><b>http状态码</b></summary>
+
+* 1** 消息 100 客户端应当继续发送请求。
+* 2** 成功 200 成功
+* 3** 重定向 301 永久重定向，例如http定向到https 302 临时重定向，例如js跳转
+* 4** 请求错误 403 forbidden 拒绝请求。 404 not found 找不到请求的网页。
+* 5** 服务器错误 500 Internal Server Error 服务器内部错误，例如php代码错误
+
+</details>
+
+
