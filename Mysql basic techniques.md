@@ -124,6 +124,9 @@
 4. 幻读：一个事务读到另一个事务已提交的insert数据
 >不可重复读重点在于update和delete，而幻读的重点在于insert。
 
+##### MySQL事务隔离级别的实现原理(重点)
+>https://www.linuxidc.com/Linux/2018-01/150610.htm
+
 </details>
 
 
