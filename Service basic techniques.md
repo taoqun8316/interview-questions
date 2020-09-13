@@ -1,13 +1,9 @@
 <details>
- <summary><b>Apache与Nginx的优缺点比较</b></summary>
+ <summary><b>AWK各种数据分析</b></summary>
 
-
+	https://segmentfault.com/a/1190000009745139
+	http://wiki.jikexueyuan.com/project/awk/
 
 </details>
 
 
-
-1、Apache与Nginx的优缺点比较
-2、Cgi 与fastcgi的区别
-3、Select, poll和epoll的区别
-4、Memcache和Redis区别

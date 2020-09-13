@@ -362,7 +362,7 @@ varchar的10代表了申请的空间长度,也是可以存储的数据的最大�
 
 
 <details>
- <summary><b></b></summary>
+ <summary><b>4、Memcache和Redis区别 (未解决)</b></summary>
 
 
 
