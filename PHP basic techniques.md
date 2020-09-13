@@ -802,9 +802,13 @@ function count_line($file)
 
 
 <details>
- <summary><b></b></summary>
+ <summary><b>PHP进程间通信的几种方式 (未解决)</b></summary>
 
- 
+* 消息队列
+* 信号量+共享内存
+* 信号
+* 管道
+* socket
 
 </details>
 
@@ -814,9 +818,38 @@ function count_line($file)
 
 
 <details>
- <summary><b></b></summary>
+ <summary><b>写一个函数，获取一个文本文件最后n行内容，要求尽可能效率高，并可以跨平台使用</b></summary>
 
- 
+  ```
+  function tail($file, $num)
+  {  
+      $fp = fopen($file,"r");  
+      $pos = -2;
+      $eof = "";  
+      $head = false;   //当总行数小于Num时，判断是否到第一行了  
+      $lines = array();  
+      while ($num > 0) {  
+          while($eof != PHP_EOL){  
+              if (fseek($fp, $pos, SEEK_END) == 0) {    //fseek成功返回0，失败返回-1  
+                  $eof = fgetc($fp);
+                  $pos--;  
+              } else {                            //当到达第一行，行首时，设置$pos失败  
+                  fseek($fp, 0, SEEK_SET);
+                  $head = true;                   //到达文件头部，开关打开  
+                  break;  
+              }  
+          }  
+          array_unshift($lines, str_replace(PHP_EOL, '', fgets($fp)));   
+          if ($head) {//这一句，只能放上一句后，因为到文件头后，把第一行读取出来再跳出整个循环  
+              break; 
+          }                 
+          $eof = "";  
+          $num--;  
+      }  
+      fclose($fp);  
+      return $lines;  
+  }  
+  ```
 
 </details>
 
