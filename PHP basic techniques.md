@@ -926,3 +926,33 @@ function count_line($file)
 </details>
 
 
+
+<details>
+ <summary><b>PHP能否实现多线程(重点)</b></summary>
+
+  >当然可以，这个问题被一个所谓资深面试官糊弄一脸； 使用PHP扩展模块pthreads的方法。
+
+  ```
+  class pthreadsTest extends Thread {
+
+      public function run () {
+
+          sleep(5);
+
+      }
+
+  }
+
+  $ts1 = new pthreadsTest();
+
+  $ts1->start();
+
+  $ts2 = new pthreadsTest();
+
+  $ts2->start();
+
+  ```
+  >因为sleep（5）被调用两次，所以需要10秒，但实际上它将是5秒。
+
+</details>
+
