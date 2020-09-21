@@ -934,21 +934,14 @@ function count_line($file)
 
   ```
   class pthreadsTest extends Thread {
-
       public function run () {
-
           sleep(5);
-
       }
-
   }
 
   $ts1 = new pthreadsTest();
-
   $ts1->start();
-
   $ts2 = new pthreadsTest();
-
   $ts2->start();
 
   ```
