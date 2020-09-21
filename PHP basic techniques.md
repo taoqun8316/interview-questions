@@ -167,7 +167,7 @@ if ($fp = fopen($fileName, 'a+')) {
   session_start();
   $_SESSION[’user’]= $name;
   $psid=session_id();
-  $fp=fopen("e:\tmp\phpsid.txt","w+";
+  $fp=fopen("e:\tmp\phpsid.txt","w+");
   fwrite($fp,$psid);
   fclose($fp);
   echo "已登录<br>";
