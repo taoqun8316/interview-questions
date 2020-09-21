@@ -173,13 +173,14 @@ if ($fp = fopen($fileName, 'a+')) {
   echo "已登录<br>";
 ```
 ```
-  $fp=fopen("e:\tmp\phpsid.txt","r";
+  $fp=fopen("e:\tmp\phpsid.txt","r");
   $sid=fread($fp,1024);
   fclose($fp);
   session_id($sid);
   session_start();
-  if(isset($_SESSION[’user’]) && $_SESSION[’user’]="laogong" {
-  echo "已登录!";
+  if(isset($_SESSION[’user’]) && $_SESSION[’user’]="laogong") {
+    echo "已登录!";
+  }
 ```
 
 >Session过期时间设定:
@@ -297,7 +298,7 @@ ob_clearn()--清空“输出缓冲区”;
 在PHP中，strlen与mb_strlen是求字符串长度的函数
 PHP内置的字符串长度函数strlen无法正确处理中文字符串，它得到的只是字符串所占的字节数。对于GB2312的中文编码，strlen得到的值是汉字个数的2倍，而对于UTF-8编码的中文，就是3倍（在 UTF-8编码下，一个汉字占3个字节）。
 
-采用mb_strlen函数可以较好地解决这个问题。mb_strlen的用法和strlen类似，只不过它有第二个可选参数用于指定字符编码。例如得到UTF-8的字符串str长度，可以用mbstrlen(str长度，可以用mbstrlen(str,‘UTF-8’)。如果省略第二个参数，则会使用PHP的内部编码。内部编码可以通过 mb_internal_encoding()函数得到。
+采用mb_strlen函数可以较好地解决这个问题。mb_strlen的用法和strlen类似，只不过它有第二个可选参数用于指定字符编码。例如得到UTF-8的字符串str长度，可以用mbstrlen(str,‘UTF-8’)。如果省略第二个参数，则会使用PHP的内部编码。内部编码可以通过 mb_internal_encoding()函数得到。
 
 需要注意的是，mb_strlen并不是PHP核心函数，使用前需要确保在php.ini中加载了php_mbstring.dll，即确保“extension=php_mbstring.dll”这一行存在并且没有被注释掉，否则会出现未定义函 数的问题。
 
@@ -391,7 +392,7 @@ array_count_values($arr); // 统计数组中所有值出现的次数
 
 
 <details>
- <summary><b>有mail.log的一个文档，内容为若干邮件地址，用’\n’分隔换行。挑选sina.com的地址（包括从文件读取、过滤到列印出来</b></summary>
+ <summary><b>有mail.log的一个文档，内容为若干邮件地址，用’\n’分隔换行。挑选sina.com的地址（包括从文件读取、过滤到列印出来)</b></summary>
 
  1. 用正则表达式（比较慢，效率地，不推荐用）
  2. cat mail.log | grep sina.com
