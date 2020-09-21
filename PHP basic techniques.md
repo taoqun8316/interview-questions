@@ -930,7 +930,9 @@ function count_line($file)
 <details>
  <summary><b>PHP能否实现多线程(重点)</b></summary>
 
-  >当然可以，这个问题被一个所谓资深面试官糊弄一脸； 使用PHP扩展模块pthreads的方法。
+  >PHP本身是不是支持多线程的，不过我们可以借助其他的方法来实现多线程； 
+
+  使用PHP扩展模块pthreads的方法。
 
   ```
   class pthreadsTest extends Thread {
