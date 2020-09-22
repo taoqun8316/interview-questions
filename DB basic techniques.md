@@ -108,7 +108,7 @@
 
 3. 可重复读(repeatable read)
 
-	>现象：同一个事务中多次读取相同的数据返回的结果是一样的。其避免了脏读和不可重复读问题，但幻读依然存在。
+	>现象：同一个事务中多次读取相同的数据返回的结果是一样的。其避免了脏读和不可重复读问题，但幻读依然存在(”并且解决了幻读问题“ 此处有待考证)。
 
 4. 串行(serializable)
 
@@ -151,6 +151,7 @@ https://blog.csdn.net/matt8/article/details/53096405
 
 	MySQL官网这样介绍:
 	>NULL columns require additional space in the rowto record whether their values are NULL. For MyISAM tables, each NULL columntakes one bit extra, rounded up to the nearest byte.
+
 	null值会占用更多的字节,且会在程序中造成很多与预期不符的情况.
 
 4. 如果要存储用户的密码散列,应该使用什么字段进行存储?
@@ -180,7 +181,6 @@ https://blog.csdn.net/matt8/article/details/53096405
 	从锁的类别上来讲,有共享锁和排他锁.
 	共享锁: 又叫做读锁. 当用户要进行数据的读取时,对数据加上共享锁.共享锁可以同时加上多个.
 	排他锁: 又叫做写锁. 当用户要进行数据的写入时,对数据加上排他锁.排他锁只可以加一个,他和其他的排他锁,共享锁都相斥.
-	用上面的例子来说就是用户的行为有两种,一种是来看房,多个用户一起看房是可以接受的. 一种是真正的入住一晚,在这期间,无论是想入住的还是想看房的都不可以.
 	锁的粒度取决于具体的存储引擎,InnoDB实现了行级锁,页级锁,表级锁.
 	他们的加锁开销从大到小,并发能力也是从大到小.
 
