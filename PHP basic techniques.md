@@ -952,3 +952,41 @@ function count_line($file)
 
 </details>
 
+
+
+<details>
+ <summary><b>Nginx与PHP工作原理</b></summary>
+
+>https://www.jianshu.com/p/df89b530db89
+
+</details>
+
+
+
+<details>
+ <summary><b>如果某个博客通过判断 referer 方式来进行图片防盗链，如何破解？ 如何预防？</b></summary>
+
+破解
+>curl 设置来源地址来欺骗对方服务器验证
+
+预防
+>未完成
+
+</details>
+
+
+<details>
+ <summary><b>设计一个秒杀系统，如何保证商品不超卖？</b></summary>
+
+>https://blog.csdn.net/zhoudaxia/article/details/38067003
+
+</details>
+
+
+<details>
+ <summary><b>面向对象 (待整理)</b></summary>
+
+>https://www.cnblogs.com/kangxl/p/6347179.html
+
+</details
+
