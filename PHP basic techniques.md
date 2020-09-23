@@ -988,5 +988,35 @@ function count_line($file)
 
 >https://www.cnblogs.com/kangxl/p/6347179.html
 
-</details
+</details>
 
+
+
+<details>
+ <summary><b>TCP/IP 网络协议，OSI 7 层指是什么？</b></summary>
+
+>参考答案：http://blog.csdn.net/jenminzhang/article/details/47017741
+
+TCP/IP 5层 指的是：
+  应用层
+  HTTP、FTP、SMTP、DNS、DSP、Telnet、Gopher、WAIS……
+  传输层
+  TCP、UDP、DVP……
+  网络层
+  IP、ICMP、AKP、RARP、UUCP……
+  接口层
+  Ethernet、Arpanet、PDN……
+  物理层
+  只要能传输IP数据报（Datagram），允许任何协议……
+
+OSI 7层指的是：
+
+  应用层 文件传输，电子邮件，文件服务，虚拟终端 TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet
+  表示层 数据格式化，代码转换，数据加密 没有协议
+  会话层 解除或建立与别的接点的联系 没有协议
+  传输层 提供端对端的接口 TCP，UDP
+  网络层 为数据包选择路由 IP，ICMP，RIP，OSPF，BGP，IGMP
+  数据链路层 传输有地址的帧以及错误检测功能 SLIP，CSLIP，PPP，ARP，RARP，MTU
+  物理层 以二进制数据形式在物理媒体上传输数据 ISO2110，IEEE802，IEEE802.2
+
+</details
