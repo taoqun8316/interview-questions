@@ -11,6 +11,16 @@
 
 </details>
 
+<details>
+ <summary><b>语句include和require的区别是什么</b></summary>
+
+1. PHP程序执行到require（）时，只会读取一次档案，故常放在程序开头，档案引入后PHP会将网页档重新编译，让引入档成为原先网页的一部分。
+2. PHP程序执行到include（）时，每次皆会读取档案，故常用于流程控制的区段，如条件判断或循环中。
+3. require() :无条件包含，如果文件不存在，会报出一个fatal error.脚本停止执行
+4. include() : 有条件包含，如果文件不存在，会给出一个 warning，但脚本会继续执行
+5. 推荐使用require_once()和include_once()，可以检测文件是否有重复包含。
+
+</details>
 
 
 <details>
