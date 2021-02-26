@@ -1031,3 +1031,40 @@ function count_line($file)
     物理层 以二进制数据形式在物理媒体上传输数据 ISO2110，IEEE802，IEEE802.2
 
 </details>
+
+<details>
+ <summary><b>php7和php5区别之间的区别</b></summary>
+
+1. 性能提升：PHP7比PHP5.0性能提升了两倍。
+
+2. 全面一致的64位支持。
+
+3. 以前的许多致命错误，现在改成抛出异常。
+
+4. PHP 7.0比PHP5.0移除了一些老的不在支持的SAPI（服务器端应用编程端口）和扩展。
+
+5. PHP 7.0比PHP5.0新增了空接合操作符。
+
+6. PHP 7.0比PHP5.0新增加了结合比较运算符。
+
+7. PHP 7.0比PHP5.0新增加了函数的返回类型声明。
+
+8. PHP 7.0比PHP5.0新增加了标量类型声明。
+
+9. PHP 7.0比PHP5.0新增加匿名类。
+</details>
+
+
+<details>
+ <summary><b>有两个数组[1,2,5,11,32,15,77]和[99,32,15,5,1,77]两个数组，写段程序找出它们共同都拥有的数，【PHP函数】</b></summary>
+
+array_intersect()
+
+</details>
+
+<details>
+ <summary><b></b></summary>
+
+
+
+</details>

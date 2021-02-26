@@ -453,6 +453,27 @@ order BY FIND_IN_SET(ID, '10, 32, 22')
 </details>
 
 
+<details>
+ <summary><b>MySQL不适合创建索引的情况</b></summary>
+
+1. 数据唯一性差（一个字段的取值只有几种时）的字段不要使用索引
+2. 频繁更新的字段不要使用索引
+3. 字段不在where语句出现时不要添加索引,如果where后含IS NULL /IS NOT NULL/ like ‘%输入符%’等条件，不建议使用索引
+4. where 子句里对索引列使用不等于（<>），使用索引效果一般
+
+</details>
+
+
+<details>
+ <summary><b>写条语句从user 表随机调取 1 条数据</b></summary>
+
+rand() 获取0到1之间的随机浮点数
+```
+select * from test where id >= ((select max(id) from test) - (select min(id) from test)) * rand() and id > (select min(id) from test) limit 1;
+```
+
+</details>
+
 
 <details>
  <summary><b></b></summary>
