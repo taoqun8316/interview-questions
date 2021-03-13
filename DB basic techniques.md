@@ -476,8 +476,8 @@ select * from test where id >= ((select max(id) from test) - (select min(id) fro
 
 
 <details>
- <summary><b></b></summary>
+ <summary><b>mysql中char与varchar的区别分析</b></summary>
 
-
+char 长度是固定的，不管你存储的数据是多少他都会都固定的长度。而varchar则处可变长度但他要在总长度上加1字符，这个用来存储位置
 
 </details>
